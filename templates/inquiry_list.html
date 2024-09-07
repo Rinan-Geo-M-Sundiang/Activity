@@ -1,0 +1,15 @@
+{% extends "home.html" %}
+{% block title %}Inquiries{% endblock %}
+{% block content %}
+<h2>Contact Inquiries</h2>
+<ul>
+    {% for inquiry in inquiries %}
+    <li>
+        <p>From: {{ inquiry.full_name }} ({{ inquiry.email }})</p>
+        <p>Subject: {{ inquiry.subject }}</p>
+        <p>Message: {{ inquiry.message }}</p>
+        <p>Date Sent: {{ inquiry.date_sent }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

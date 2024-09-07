@@ -1,0 +1,31 @@
+{% extends "home.html" %}  <!-- Extend the base or home template once -->
+
+{% block title %} Projects{% endblock %}  <!-- Block for title -->
+
+{% block content %}<h1>Projects</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                {% if user.is_superuser %}
+                    <li><a href="{% url 'project-create' %}">Add Project</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <ul>
+            {% for project in projects %}
+                <li>
+                    <a href="{% url 'project-detail' project.pk %}">{{ project.title }}</a>
+                    {% if user.is_superuser %}
+                        <a href="{% url 'project-edit' project.pk %}">Edit</a>
+                        <a href="{% url 'project-delete' project.pk %}">Delete</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+{% endblock %}

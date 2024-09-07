@@ -1,0 +1,24 @@
+{% extends "home.html" %}
+{% block title %}{{ project.title }}{% endblock %}
+{% block content %}
+<header>
+        <h1>{{ object.title }}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                {% if user.is_superuser %}
+                    <li><a href="{% url 'project-edit' object.pk %}">Edit</a></li>
+                    <li><a href="{% url 'project-delete' object.pk %}">Delete</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>{{ object.title }}</h2>
+        <p>{{ object.description }}</p>
+        <img src="{{ object.image.url }}" alt="{{ object.title }}">
+        <a href="{{ object.project_url }}">Project Link</a>
+    </main>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio{% endblock %}</title>
+    <title>Title</title>
+</head>
+<body>
+<header>
+        <h1>My Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Portfolio</p>
+    </footer>
+</body>
+<script src="{% static 'js/bootstrap.js' %}" ></script>
+</html>
